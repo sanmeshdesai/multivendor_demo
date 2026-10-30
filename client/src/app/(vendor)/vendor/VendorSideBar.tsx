@@ -29,8 +29,9 @@ export default function VendorSidebar() {
         </Link>
 
         <button
+          type="button"
           onClick={() => setIsOpen(false)}
-          className="md:hidden text-2xl text-gray-500"
+          className="text-2xl text-gray-500 md:hidden"
           aria-label="Close sidebar"
         >
           ×
@@ -88,23 +89,29 @@ export default function VendorSidebar() {
 
   return (
     <>
-      {/* Mobile hamburger */}
-      <button
-        type="button"
-        onClick={() => setIsOpen(true)}
-        aria-label="Open vendor menu"
-        aria-expanded={isOpen}
-        className="fixed left-4 top-4 z-40 flex size-10 items-center justify-center rounded-lg border border-gray-200 bg-white text-xl text-gray-700 shadow-sm md:hidden"
-      >
-        ☰
-      </button>
+      {/* Mobile Header */}
+      <div className="sticky top-0 z-40 flex h-16 items-center gap-3 border-b border-gray-200 bg-white px-4 md:hidden">
+        <button
+          type="button"
+          onClick={() => setIsOpen(true)}
+          aria-label="Open vendor menu"
+          aria-expanded={isOpen}
+          className="flex size-10 shrink-0 items-center justify-center rounded-lg border border-gray-200 text-xl text-gray-700 hover:bg-gray-50"
+        >
+          ☰
+        </button>
 
-      {/* Desktop sidebar */}
+        <Link href="/" className="text-xl font-bold text-indigo-600">
+          MultiStore
+        </Link>
+      </div>
+
+      {/* Desktop Sidebar */}
       <aside className="hidden w-64 shrink-0 border-r border-gray-200 bg-white md:flex md:flex-col">
         <SidebarContent />
       </aside>
 
-      {/* Mobile overlay */}
+      {/* Mobile Sidebar Drawer */}
       {isOpen && (
         <div
           className="fixed inset-0 z-50 bg-black/40 md:hidden"
